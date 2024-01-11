@@ -39,5 +39,7 @@ jobs:
         run: |
           kubectl apply -f k8s/front-web-deployment.yaml
           kubectl apply -f k8s/db-deployment.yaml
+          kubectl rollout restart deployment front-web-deployment
+          kubectl rollout restart deployment db-deployment
           kubectl apply -f k8s/db-service.yaml
           kubectl apply -f k8s/web-loadbalancer.yaml
